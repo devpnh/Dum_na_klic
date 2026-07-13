@@ -842,6 +842,16 @@ body{padding-bottom:0}
 .autocycle__k{font-weight:600;font-size:16px;letter-spacing:-.01em}
 .autocycle__v{color:var(--muted);font-size:13.5px;margin-top:2px}
 
+/* ---- Trust grid „Proč stavět s námi" (celet-style, borderless) ---- */
+.why{display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,52px) clamp(28px,3vw,44px)}
+@media(min-width:600px){.why{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.why{grid-template-columns:repeat(3,1fr)}}
+.why__ic{display:block;width:44px;height:44px;margin-bottom:18px;color:var(--green)}
+.why__ic svg{width:44px;height:44px;fill:none;stroke:var(--green);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.why__title{font-size:clamp(20px,1.9vw,24px);font-weight:400;letter-spacing:-.01em;margin-bottom:9px;color:var(--ink)}
+.why__title strong{font-weight:800}
+.why__text{color:var(--muted);font-size:15px;line-height:1.55;max-width:36ch}
+
 /* ---- Pathcards asymetricky ---- */
 .pathgrid{display:grid;gap:var(--gap)}
 @media(min-width:900px){
