@@ -524,9 +524,9 @@ ul{margin:0;padding:0;list-style:none}
 .footer__logo img{height:72px}
 .footer__about{font-size:14.5px;color:#9fb6a6;max-width:34ch;line-height:1.65}
 .footer__socials{display:flex;gap:12px;margin-top:20px;align-items:center}
-.footer__socials a{width:42px;height:42px;border-radius:11px;border:1px solid rgba(255,255,255,.16);
-  display:inline-flex;align-items:center;justify-content:center;transition:.25s}
-.footer__socials a:hover{background:var(--green);border-color:var(--green);transform:translateY(-2px)}
+.site-footer .footer__socials a{width:42px;height:42px;padding:0;border-radius:11px;
+  border:1px solid rgba(255,255,255,.16);display:inline-flex;align-items:center;justify-content:center;transition:.25s}
+.site-footer .footer__socials a:hover{background:var(--green);border-color:var(--green);transform:translateY(-2px)}
 .footer__socials svg{width:18px;height:18px;fill:#fff;display:block}
 .footer__socials svg[stroke]{fill:none;stroke:#fff}
 .footer__col h4{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.08em;
