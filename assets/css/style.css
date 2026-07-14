@@ -376,19 +376,6 @@ ul{margin:0;padding:0;list-style:none}
 .vreview__name{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.03em;color:var(--green);margin-top:2px}
 .section--dark .vreview__name,.section--pine .vreview__name{color:#7fd39a}
 
-/* placeholder slot */
-.vreview--placeholder .vreview__frame{background:var(--green-tint);display:grid;place-items:center}
-.section--dark .vreview--placeholder .vreview__frame,.section--pine .vreview--placeholder .vreview__frame{background:rgba(127,211,154,.1)}
-.vreview--placeholder .vreview__frame span{font-family:var(--font-mono);font-size:12px;color:var(--green);
-  text-align:center;padding:20px;letter-spacing:.03em}
-
-/* ---------- Placeholder tag ---------- */
-.placeholder-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:var(--green-tint);
-  border:1px dashed var(--green);padding:5px 11px;border-radius:999px}
-.placeholder-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);animation:ph 1.6s infinite}
-@keyframes ph{0%,100%{opacity:.35}50%{opacity:1}}
-
 /* ---------- Reviews ---------- */
 .reviews__score{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:6px}
 .reviews__score-num{font-family:var(--font-display);font-weight:300;font-size:clamp(56px,6vw,72px);line-height:.94;color:var(--green);letter-spacing:-.035em}
@@ -403,16 +390,6 @@ ul{margin:0;padding:0;list-style:none}
   display:grid;place-items:center;font-family:var(--font-display);font-weight:800;flex:none}
 .review__name{font-weight:600;font-size:15px}
 .review__src{font-family:var(--font-mono);font-size:11.5px;color:var(--muted)}
-
-/* ---------- Promo / reklamní sekce ---------- */
-.promo{position:relative;border-radius:var(--radius);overflow:hidden;
-  background:linear-gradient(120deg,var(--green-deep),#12402a);color:#fff;padding:clamp(34px,5vw,64px);
-  border:1px dashed rgba(159,227,180,.4)}
-.promo__in{position:relative;z-index:1;max-width:640px}
-.promo__title{font-size:clamp(26px,3.4vw,42px);color:#fff}
-.promo__text{margin-top:14px;color:rgba(255,255,255,.85);font-size:17px}
-.promo__actions{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
-.promo__watermark{position:absolute;right:-30px;bottom:-60px;z-index:0;width:280px;height:280px;opacity:.12}
 
 /* ---------- Articles ---------- */
 .article-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
@@ -449,10 +426,12 @@ ul{margin:0;padding:0;list-style:none}
 .contact-grid{display:grid;gap:var(--gap)}
 @media(min-width:940px){.contact-grid{grid-template-columns:1.05fr .95fr;align-items:start}}
 .contact-info{display:flex;flex-direction:column;margin-top:8px}
-.contact-line{display:flex;align-items:center;gap:15px;padding:16px 0;border-top:1px solid var(--line)}
-.contact-line__ic{flex:none;width:26px;height:26px;color:var(--green);display:grid;place-items:center}
+.contact-lines{margin-top:26px;border-bottom:1px solid var(--line)}
+.contact-line{display:grid;grid-template-columns:26px 1fr;column-gap:16px;align-items:center;
+  padding:17px 0;border-top:1px solid var(--line)}
+.contact-line__ic{width:26px;height:26px;color:var(--green);display:grid;place-items:center}
 .contact-line__ic svg{width:26px;height:26px;fill:none;stroke:var(--green);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.contact-line__txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.contact-line__txt{display:flex;flex-direction:column;gap:3px;min-width:0}
 .contact-line__k{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .contact-line__v{font-size:clamp(17px,1.5vw,19px);font-weight:600;letter-spacing:-.01em}
 .contact-line__v a{transition:color .2s}
@@ -495,6 +474,19 @@ ul{margin:0;padding:0;list-style:none}
   text-transform:uppercase;color:#fff;background:rgba(14,46,30,.6);padding:5px 10px;border-radius:6px}
 .ba__label--l{left:14px}.ba__label--r{right:14px}
 
+/* editoriální den/večer plátno (homepage) */
+.daynight .section-head{margin-bottom:clamp(34px,4.5vw,54px)}
+.ba--wide{aspect-ratio:2/1;border-radius:calc(var(--radius) + 2px);box-shadow:var(--shadow-lg)}
+@media(max-width:640px){.ba--wide{aspect-ratio:4/3}}
+.daynight__foot{display:flex;justify-content:space-between;align-items:center;gap:14px 24px;
+  flex-wrap:wrap;margin-top:20px}
+.daynight__caption{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;color:#8fb69c}
+.daynight__link{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;
+  color:#fff;transition:gap .2s,color .2s}
+.daynight__link:hover{color:#9fe3b4;gap:13px}
+.daynight__link svg{width:17px;height:17px;fill:currentColor}
+
 /* ---------- Lightbox ---------- */
 .lightbox{position:fixed;inset:0;z-index:90;background:rgba(14,46,30,.94);display:none;
   align-items:center;justify-content:center;padding:24px}
@@ -533,13 +525,14 @@ ul{margin:0;padding:0;list-style:none}
   text-transform:uppercase;color:#8fd6a5;margin-bottom:16px}
 .footer__col a,.footer__col li{display:block;font-size:14.5px;color:#bcd0c2;padding:5px 0;transition:color .2s}
 .footer__col a:hover{color:#fff}
-.footer__contact{font-family:var(--font-mono);font-size:13.5px;line-height:1.9;color:#bcd0c2}
-.footer__contact strong{color:#fff}
+.footer__contact{display:flex;flex-direction:column;gap:6px;font-size:14.5px;line-height:1.6;color:#bcd0c2}
+.footer__contact strong{color:#fff;font-weight:600}
+.footer__contact a{transition:color .2s}
 .footer__contact a:hover{color:#8fd6a5}
+.footer__addr{font-family:var(--font-mono);font-size:13px;line-height:1.7;color:#9fb6a6;margin-bottom:4px}
 .footer__bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;
   padding:24px 0 32px;font-size:13px;color:#7f9686}
 .footer__bottom a:hover{color:#8fd6a5}
-.footer__made{font-family:var(--font-mono);font-size:12px}
 
 /* ---------- Sticky mobile call bar ---------- */
 .callbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:flex;gap:1px;background:var(--line);
@@ -701,10 +694,6 @@ body{padding-bottom:0}
 .vthumb.is-active{border-color:var(--green)}
 .vthumb.is-active .vthumb__label{color:#9fe3b4}
 @media(hover:hover){.vthumb:hover{transform:translateY(-2px)}.vthumb:hover .vthumb__ico{background:var(--green)}}
-.vthumb--ph{cursor:default;border:2px dashed rgba(127,211,154,.4);background:rgba(127,211,154,.06);
-  display:flex;align-items:center;justify-content:center;padding:14px;min-height:80px}
-.vthumb--ph .vthumb__label{color:#7fd39a;font-family:var(--font-mono);font-size:12px;font-weight:500;text-align:center}
-@media(min-width:940px){.vthumb--ph{justify-content:flex-start}}
 
 /* =====================================================================
    ENHANCEMENTS (feedback v3 — clean/celet, technický vzhled)
@@ -777,17 +766,18 @@ body{padding-bottom:0}
 @media(max-width:1079px){.promo-pop{display:none!important}}
 @media(prefers-reduced-motion:reduce){.promo-pop{transition:none}}
 
-/* ---- Fakturační údaje jako karty (Oficiální údaje o firmě) ---- */
-.specsheet--data{border:0;background:transparent;border-radius:0;overflow:visible;
-  display:grid;gap:14px;grid-template-columns:1fr}
-@media(min-width:600px){.specsheet--data{grid-template-columns:1fr 1fr}}
-.specsheet--data .specrow{display:block;border:1px solid var(--line);border-radius:12px;background:var(--white);
-  padding:18px 20px}
-.specsheet--data .specrow:nth-child(even){background:var(--white)}
-.specsheet--data .specrow--wide{grid-column:1/-1}
-.specsheet--data .specrow__k{font-size:11px}
-.specsheet--data .specrow__v{margin-top:6px;font-family:var(--font-mono);font-size:16px;color:var(--ink)}
-.specsheet--data .specrow__v strong{color:var(--ink)}
+/* ---- Fakturační údaje — tichý blok (kontakt) ---- */
+.orgdata{max-width:920px;padding-top:clamp(26px,3vw,38px);border-top:1px solid var(--line)}
+.orgdata__head{font-family:var(--font-mono);font-size:11.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+.orgdata__grid{display:grid;gap:18px 40px;grid-template-columns:1fr;margin:0}
+@media(min-width:560px){.orgdata__grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.orgdata__grid{grid-template-columns:repeat(3,1fr)}}
+.orgdata__item dt{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted)}
+.orgdata__item dd{margin:4px 0 0;font-size:15px;color:var(--ink);font-feature-settings:"tnum" 1}
+.orgdata__note{margin-top:26px;font-size:13px;line-height:1.6;color:var(--muted);max-width:64ch}
+.orgdata__note a{color:var(--green);text-decoration:underline}
 
 /* ---- Article rail (články — posuvný, ne rigidní grid) ---- */
 .article-rail{display:flex;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
@@ -831,8 +821,6 @@ body{padding-bottom:0}
 .section--tint .vthumb__sub{color:var(--muted)}
 .section--tint .vthumb.is-active{border-color:var(--green)}
 .section--tint .vthumb.is-active .vthumb__label{color:var(--green)}
-.section--tint .vthumb--ph{background:rgba(0,128,0,.05);border-color:rgba(0,128,0,.28)}
-.section--tint .vthumb--ph .vthumb__label{color:var(--green)}
 
 /* ---- Auto-cycling highlight (Jednoduše a bez starostí) ---- */
 .autocycle{display:grid;gap:12px;margin-top:8px}
@@ -844,12 +832,6 @@ body{padding-bottom:0}
 .autocycle__ic svg{width:26px;height:26px;fill:none;stroke:var(--green);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .autocycle__k{font-weight:600;font-size:16px;letter-spacing:-.01em}
 .autocycle__v{color:var(--muted);font-size:13.5px;margin-top:2px}
-
-/* ---- Databar (fakturační údaje — heading vlevo, tabulka vpravo) ---- */
-.databar{display:grid;gap:clamp(28px,4vw,52px)}
-@media(min-width:900px){.databar{grid-template-columns:.92fr 1.08fr;align-items:start}}
-.databar__note{margin-top:22px;font-size:14px;line-height:1.6;color:var(--muted)}
-.databar__note a{color:var(--green);text-decoration:underline}
 
 /* ---- Trust grid „Proč stavět s námi" (celet-style, borderless) ---- */
 .why{display:grid;grid-template-columns:1fr;gap:clamp(30px,4vw,52px) clamp(28px,3vw,44px)}
