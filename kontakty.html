@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=8">
+  <link rel="stylesheet" href="assets/css/style.css?v=9">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23008000'/%3E%3Cpath d='M16 6l8 6.2v1.6h-2V24h-4.6v-5.6h-2.8V24H8V13.8H6v-1.6z' fill='%23fff'/%3E%3C/svg%3E">
 </head>
 <body class="has-callbar">
@@ -148,7 +148,7 @@
       </div>
       <div class="grid grid--2">
         <article class="person reveal">
-          <div class="person__photo"><img src="https://www.dumnaklic.eu/wp-content/uploads/2023/04/web1-m-1.png" alt="Josef Loukota, jednatel firmy Dům na klíč" loading="lazy"></div>
+          <div class="person__photo"><img src="assets/img/tym-loukota.jpg" alt="Josef Loukota, jednatel firmy Dům na klíč" loading="lazy"></div>
           <div class="person__body">
             <h3 class="person__name">Josef Loukota</h3>
             <p class="person__role">Jednatel</p>
@@ -160,7 +160,7 @@
           </div>
         </article>
         <article class="person reveal" data-delay="1">
-          <div class="person__photo"><img src="https://www.dumnaklic.eu/wp-content/uploads/2023/04/web2m-1.png" alt="Zakladatel a vedoucí staveb firmy Dům na klíč" loading="lazy"></div>
+          <div class="person__photo"><img src="assets/img/tym-velich.jpg" alt="Zakladatel a vedoucí staveb firmy Dům na klíč" loading="lazy"></div>
           <div class="person__body">
             <h3 class="person__name">Zakladatel &amp; vedoucí staveb</h3>
             <p class="person__role">Zakladatel · staví domy od roku 2003</p>
@@ -178,21 +178,23 @@
   <!-- ============ FAKTURAČNÍ ÚDAJE ============ -->
   <section class="section">
     <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">Fakturační údaje</p>
-        <h2 class="section-head__title">Oficiální údaje o firmě</h2>
-        <p class="section-head__lead">Vše potřebné pro smlouvu i platbu na jednom místě. Dům na klíč s. r. o. je zapsaná v obchodním rejstříku.</p>
+      <div class="databar">
+        <div class="databar__intro reveal">
+          <p class="eyebrow">Fakturační údaje</p>
+          <h2 class="section-head__title">Oficiální údaje o firmě</h2>
+          <p class="lead mt-s">Vše potřebné pro smlouvu i platbu na jednom místě. Dům na klíč s. r. o. je zapsaná v obchodním rejstříku.</p>
+          <p class="databar__note">Jak nakládáme s vašimi údaji, se dozvíte v <a href="https://www.dumnaklic.eu/privacy-policy/" target="_blank" rel="noopener">Zásadách ochrany osobních údajů</a>.</p>
+        </div>
+        <div class="specsheet reveal" data-delay="1">
+          <div class="specrow"><div class="specrow__k">Název</div><div class="specrow__v"><strong>Dům na klíč s. r. o.</strong></div></div>
+          <div class="specrow"><div class="specrow__k">Sídlo</div><div class="specrow__v">Jakuba Jana Ryby 917/7, 323 00 Plzeň</div></div>
+          <div class="specrow"><div class="specrow__k">IČ</div><div class="specrow__v">09724788</div></div>
+          <div class="specrow"><div class="specrow__k">DIČ</div><div class="specrow__v">CZ09724788</div></div>
+          <div class="specrow"><div class="specrow__k">Banka (FIO)</div><div class="specrow__v">2401932318/2010</div></div>
+          <div class="specrow"><div class="specrow__k">SWIFT / BIC</div><div class="specrow__v">FIOBCZPPXXX</div></div>
+          <div class="specrow"><div class="specrow__k">IBAN</div><div class="specrow__v">CZ92 2010 0000 0024 0193 2318</div></div>
+        </div>
       </div>
-      <div class="specsheet specsheet--data reveal wrap-narrow">
-        <div class="specrow specrow--wide"><div class="specrow__k">Název</div><div class="specrow__v"><strong>Dům na klíč s. r. o.</strong></div></div>
-        <div class="specrow specrow--wide"><div class="specrow__k">Sídlo</div><div class="specrow__v">Jakuba Jana Ryby 917/7, 323 00 Plzeň</div></div>
-        <div class="specrow"><div class="specrow__k">IČ</div><div class="specrow__v">09724788</div></div>
-        <div class="specrow"><div class="specrow__k">DIČ</div><div class="specrow__v">CZ09724788</div></div>
-        <div class="specrow"><div class="specrow__k">Banka (FIO)</div><div class="specrow__v">2401932318/2010</div></div>
-        <div class="specrow"><div class="specrow__k">SWIFT / BIC</div><div class="specrow__v">FIOBCZPPXXX</div></div>
-        <div class="specrow"><div class="specrow__k">IBAN</div><div class="specrow__v">CZ92 2010 0000 0024 0193 2318</div></div>
-      </div>
-      <p class="divider-note reveal">Jak nakládáme s vašimi údaji, se dozvíte v <a href="https://www.dumnaklic.eu/privacy-policy/" target="_blank" rel="noopener">Zásadách ochrany osobních údajů</a>.</p>
     </div>
   </section>
 
@@ -276,6 +278,6 @@
   <div class="lightbox__cap"></div>
 </div>
 
-<script src="assets/js/main.js?v=8"></script>
+<script src="assets/js/main.js?v=9"></script>
 </body>
 </html>
