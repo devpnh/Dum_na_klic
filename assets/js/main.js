@@ -346,4 +346,211 @@
     light();
     setInterval(function () { i = (i + 1) % items.length; light(); }, 2400);
   });
+
+  /* ---- Lead funnel (3krokový poptávkový modal) ---- */
+  (function leadFunnel() {
+    var TPL =
+      '<div class="lead-modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="lfTitle" hidden>' +
+        '<div class="lead-modal__scrim" data-lf-close></div>' +
+        '<div class="lead-modal__dialog" role="document">' +
+          '<button class="lead-modal__close" type="button" data-lf-close aria-label="Zavřít poptávku">&times;</button>' +
+          '<div class="lf-head">' +
+            '<div class="lf-progress"><span class="lf-progress__fill"></span></div>' +
+            '<div class="lf-meta"><span class="lf-eyebrow">Nezávazná poptávka</span>' +
+              '<span class="lf-count">Krok <b data-lf-cur>1</b> ze 3</span></div>' +
+          '</div>' +
+          '<form class="lf-form" novalidate>' +
+
+            /* KROK 1 */
+            '<div class="lf-step is-active" data-lf-step="1">' +
+              '<h3 class="lf-title" id="lfTitle">Co pro vás máme postavit?</h3>' +
+              '<p class="lf-sub">Vyberte, co nejlépe vystihuje váš záměr. Upřesníme spolu.</p>' +
+              '<div class="lf-opts">' +
+                opt('Typový dům na klíč', 'Vyberu z katalogu, vy postavíte za pevnou cenu.', '<path d="M4 11 12 4l8 7"/><path d="M6 10v9h5v-6h2v6h5v-9"/>') +
+                opt('Mám vlastní projekt', 'Postavte dům podle mé projektové dokumentace.', '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>') +
+                opt('Zatím se jen rozhoduji', 'Poradíme vám a spočítáme orientační cenu.', '<path d="M5 5h14v10H9l-4 4z"/><path d="M12 8v3M12 13h.01"/>') +
+              '</div>' +
+            '</div>' +
+
+            /* KROK 2 */
+            '<div class="lf-step" data-lf-step="2">' +
+              '<h3 class="lf-title">Pár detailů k vašemu domu</h3>' +
+              '<p class="lf-sub">Nemusíte nic řešit přesně — orientační odpovědi stačí.</p>' +
+              grp('Velikost dispozice', 'dispozice', ['3+kk', '4+kk', '5+kk', '6+kk a více', 'Nevím']) +
+              grp('Pozemek', 'pozemek', ['Mám pozemek', 'Hledám pozemek', 'Zatím ne']) +
+              grp('Kdy chcete stavět', 'termin', ['Do 6 měsíců', 'Do roka', 'Za 1–2 roky', 'Jen zjišťuji']) +
+            '</div>' +
+
+            /* KROK 3 */
+            '<div class="lf-step" data-lf-step="3">' +
+              '<h3 class="lf-title">Kam se vám ozveme?</h3>' +
+              '<p class="lf-sub">Ozveme se do jednoho pracovního dne. Nezávazně a zdarma.</p>' +
+              '<div class="field"><label for="lfName">Jméno a příjmení <span class="req">*</span></label>' +
+                '<input id="lfName" name="lf_name" type="text" placeholder="Jan Novák" autocomplete="name" required></div>' +
+              '<div class="field"><label for="lfTel">Telefon <span class="req">*</span></label>' +
+                '<input id="lfTel" name="lf_tel" type="tel" placeholder="+420 …" autocomplete="tel" required></div>' +
+              '<div class="field"><label for="lfEmail">E-mail</label>' +
+                '<input id="lfEmail" name="lf_email" type="email" placeholder="vas@email.cz" autocomplete="email"></div>' +
+              '<label class="form__consent"><input type="checkbox" name="lf_consent" required> ' +
+                'Souhlasím se zpracováním osobních údajů za účelem vyřízení poptávky.</label>' +
+            '</div>' +
+
+            /* ÚSPĚCH */
+            '<div class="lf-step lf-done" data-lf-step="done">' +
+              '<span class="lf-done__ic"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>' +
+              '<h3 class="lf-title">Děkujeme, máme to!</h3>' +
+              '<p class="lf-sub">Vaši poptávku jsme přijali. Ozveme se vám do jednoho pracovního dne a domluvíme další postup.</p>' +
+              '<button type="button" class="btn btn--primary btn--block" data-lf-close>Zavřít</button>' +
+            '</div>' +
+
+            '<div class="lf-nav">' +
+              '<button type="button" class="btn btn--ghost lf-back" data-lf-back>Zpět</button>' +
+              '<button type="button" class="btn btn--primary lf-next" data-lf-next>Pokračovat</button>' +
+              '<button type="submit" class="btn btn--primary lf-submit">Odeslat poptávku</button>' +
+            '</div>' +
+            '<p class="lf-foot"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Vaše údaje jsou v bezpečí.</p>' +
+          '</form>' +
+        '</div>' +
+      '</div>';
+
+    function opt(title, desc, icon) {
+      return '<button type="button" class="lf-opt" data-lf-choice="zamer" data-value="' + title + '" aria-pressed="false">' +
+        '<span class="lf-opt__ic"><svg viewBox="0 0 24 24">' + icon + '</svg></span>' +
+        '<span class="lf-opt__txt"><span class="lf-opt__t">' + title + '</span><span class="lf-opt__d">' + desc + '</span></span>' +
+        '<span class="lf-opt__arw"><svg viewBox="0 0 24 24"><path d="M4 11h12.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H4z"/></svg></span>' +
+        '</button>';
+    }
+    function grp(label, key, values) {
+      var chips = values.map(function (v) {
+        return '<button type="button" class="lf-chip" data-value="' + v + '" aria-pressed="false">' + v + '</button>';
+      }).join('');
+      return '<div class="lf-group"><span class="lf-label">' + label + '</span>' +
+        '<div class="lf-chips" data-lf-chips="' + key + '">' + chips + '</div></div>';
+    }
+
+    var host = document.createElement('div');
+    host.innerHTML = TPL;
+    var modal = host.firstElementChild;
+    document.body.appendChild(modal);
+
+    var STEPS = ['1', '2', '3'];
+    var cur = 0, done = false, lastFocus = null;
+    var form = modal.querySelector('.lf-form');
+    var fill = modal.querySelector('.lf-progress__fill');
+    var curEl = modal.querySelector('[data-lf-cur]');
+    var meta = modal.querySelector('.lf-meta');
+    var nav = modal.querySelector('.lf-nav');
+    var foot = modal.querySelector('.lf-foot');
+    var backBtn = modal.querySelector('[data-lf-back]');
+    var nextBtn = modal.querySelector('[data-lf-next]');
+    var submitBtn = modal.querySelector('.lf-submit');
+
+    function chosenZamer() { return modal.querySelector('[data-lf-choice="zamer"].is-sel'); }
+
+    function render() {
+      var key = done ? 'done' : STEPS[cur];
+      modal.querySelectorAll('.lf-step').forEach(function (s) {
+        s.classList.toggle('is-active', s.getAttribute('data-lf-step') === key);
+      });
+      if (done) {
+        fill.style.width = '100%';
+        nav.style.display = 'none'; foot.style.display = 'none'; meta.style.visibility = 'hidden';
+        return;
+      }
+      nav.style.display = ''; foot.style.display = ''; meta.style.visibility = '';
+      fill.style.width = ((cur + 1) / STEPS.length * 100) + '%';
+      if (curEl) curEl.textContent = cur + 1;
+      backBtn.style.display = cur > 0 ? '' : 'none';
+      var last = cur === STEPS.length - 1;
+      nextBtn.style.display = last ? 'none' : '';
+      submitBtn.style.display = last ? '' : 'none';
+      nextBtn.disabled = (cur === 0 && !chosenZamer());
+    }
+
+    function openModal() {
+      lastFocus = document.activeElement;
+      if (typeof setDrawer === 'function') setDrawer(false);
+      var promoEl = document.getElementById('promoPop');
+      if (promoEl) promoEl.classList.remove('is-shown');
+      done = false; render();
+      modal.hidden = false;
+      void modal.offsetWidth;
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () {
+        var f = modal.querySelector('.lf-step.is-active .lf-opt, .lf-step.is-active input, .lf-step.is-active button');
+        if (f) f.focus();
+      }, 80);
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      setTimeout(function () { modal.hidden = true; }, 340);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    /* výběr záměru (krok 1) — zvýrazní a automaticky posune dál */
+    modal.querySelectorAll('[data-lf-choice="zamer"]').forEach(function (b) {
+      on(b, 'click', function () {
+        modal.querySelectorAll('[data-lf-choice="zamer"]').forEach(function (x) {
+          x.classList.remove('is-sel'); x.setAttribute('aria-pressed', 'false');
+        });
+        b.classList.add('is-sel'); b.setAttribute('aria-pressed', 'true');
+        nextBtn.disabled = false;
+        setTimeout(function () { if (cur === 0 && !done) { cur = 1; render(); } }, 260);
+      });
+    });
+
+    /* chipy (krok 2) — jednoduchý výběr, lze zrušit */
+    modal.querySelectorAll('.lf-chips').forEach(function (group) {
+      group.querySelectorAll('.lf-chip').forEach(function (chip) {
+        on(chip, 'click', function () {
+          var was = chip.classList.contains('is-sel');
+          group.querySelectorAll('.lf-chip').forEach(function (c) {
+            c.classList.remove('is-sel'); c.setAttribute('aria-pressed', 'false');
+          });
+          if (!was) { chip.classList.add('is-sel'); chip.setAttribute('aria-pressed', 'true'); }
+        });
+      });
+    });
+
+    on(nextBtn, 'click', function () { if (cur < STEPS.length - 1) { cur++; render(); } });
+    on(backBtn, 'click', function () { if (cur > 0) { cur--; render(); } });
+
+    on(form, 'submit', function (e) {
+      e.preventDefault();
+      var name = form.querySelector('[name="lf_name"]');
+      var tel = form.querySelector('[name="lf_tel"]');
+      var consent = form.querySelector('[name="lf_consent"]');
+      var ok = true;
+      [name, tel].forEach(function (inp) {
+        var bad = !inp.value.trim();
+        inp.closest('.field').classList.toggle('is-error', bad);
+        if (bad) ok = false;
+      });
+      var consentWrap = consent.closest('.form__consent');
+      consentWrap.classList.toggle('is-error', !consent.checked);
+      if (!consent.checked) ok = false;
+      if (!ok) {
+        var firstBad = form.querySelector('.field.is-error input');
+        if (firstBad) firstBad.focus();
+        return;
+      }
+      done = true; render();
+    });
+
+    /* zavření */
+    modal.querySelectorAll('[data-lf-close]').forEach(function (el) { on(el, 'click', closeModal); });
+    on(document, 'keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    /* napojení všech CTA „Nezávazná poptávka" napříč webem */
+    var ctas = document.querySelectorAll('a, button');
+    Array.prototype.forEach.call(ctas, function (el) {
+      if (modal.contains(el)) return;
+      if ((el.textContent || '').trim().toLowerCase() !== 'nezávazná poptávka') return;
+      on(el, 'click', function (e) { e.preventDefault(); openModal(); });
+    });
+  })();
 })();

@@ -14,17 +14,17 @@
   <meta name="theme-color" content="#008000">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=10">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=18">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23008000'/%3E%3Cpath d='M16 6l8 6.2v1.6h-2V24h-4.6v-5.6h-2.8V24H8V13.8H6v-1.6z' fill='%23fff'/%3E%3C/svg%3E">
 </head>
-<body class="has-callbar">
+<body class="has-callbar home nav-over-hero">
 
 <!-- ============ HEADER (identické na všech stránkách) ============ -->
 <header class="site-header">
   <div class="nav">
     <div class="container nav__in">
-      <a class="nav__logo" href="index.html" aria-label="Dům na klíč, domů"><img src="assets/img/logo.png?v=6" alt="Dům na klíč"></a>
+      <a class="nav__logo" href="index.html" aria-label="Dům na klíč, domů"><img class="nav__logo-dark" src="assets/img/logo.png?v=6" alt="Dům na klíč"><img class="nav__logo-light" src="assets/img/logo-light.png?v=6" alt="Dům na klíč" aria-hidden="true"></a>
       <nav class="nav__menu" aria-label="Hlavní menu">
         <a class="nav__link" data-nav="index.html" href="index.html">Domů</a>
         <a class="nav__link" data-nav="projekty-typove.html" href="projekty-typove.html">Domy na klíč</a>
@@ -34,7 +34,6 @@
         <a class="nav__link" data-nav="kontakty.html" href="kontakty.html">Kontakt</a>
       </nav>
       <div class="nav__right">
-        <a class="nav__phone" href="tel:+420722922892" aria-label="Zavolejte nám"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1z"/></svg><span>+420 722 922 892</span></a>
         <a class="btn btn--primary nav__cta" href="kontakty.html">Nezávazná poptávka</a>
         <button class="nav__toggle" aria-label="Otevřít menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
@@ -69,29 +68,45 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero__bg" data-parallax="0.12">
+    <div class="hero__bg" data-parallax="0.10">
       <img class="hero__poster" src="https://www.dumnaklic.eu/wp-content/uploads/2026/04/IMG_3755.jpg" alt="Moderní patrový rodinný dům na klíč s dřevěnou fasádou">
+      <!-- VIDEO POZADÍ DOČASNĚ SKRYTÉ. Až bude čas, odkomentuj řádek níže pro obnovení video pozadí:
       <div class="hero__video" data-hero-video="AIM_OCG9FKY" aria-hidden="true"></div>
+      -->
     </div>
     <div class="hero__overlay"></div>
+
+    <p class="hero__plate" aria-hidden="true">Realizace · patrový dům 5+kk · Plzeňsko</p>
+
     <div class="hero__inner">
       <div class="container">
-        <span class="hero__eyebrow">Stavební firma · Plzeňský kraj · od roku 2003</span>
-        <h1 class="hero__title">Zděný dům na klíč, <em>připravený k nastěhování.</em></h1>
-        <p class="hero__lead">Stavíme nízkoenergetické rodinné domy v Plzni a okolí. Pevná cena, jasný termín, jedna firma od projektu po klíče.</p>
-        <div class="hero__actions">
+        <p class="hero__kicker">
+          <span>Stavební firma</span><span>Plzeňský kraj</span><span>od roku 2003</span>
+        </p>
+        <h1 class="hero__headline">Zděný dům na klíč,<br><span class="hero__headline-accent">připravený k nastěhování.</span></h1>
+        <p class="hero__lead">Nízkoenergetické rodinné domy v Plzni a okolí. Pevná cena, jasný termín a jedna firma, která vás provede od projektu až po předání klíčů.</p>
+        <div class="hero__cta">
           <a class="btn btn--primary btn--lg" href="projekty-typove.html">Prohlédnout domy
             <svg viewBox="0 0 24 24"><path d="M4 11h12.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H4z"/></svg></a>
-          <a class="btn btn--outline-light btn--lg" href="realizace.html">Naše realizace</a>
+          <a class="hero__textlink" href="realizace.html">Naše realizace
+            <svg viewBox="0 0 24 24"><path d="M4 11h12.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H4z"/></svg></a>
         </div>
-        <div class="hero__meta">
-          <div class="hero__meta-item"><span class="hero__meta-num">40+</span><span class="hero__meta-label">Dokončených domů</span></div>
-          <div class="hero__meta-item"><span class="hero__meta-num">20</span><span class="hero__meta-label">Let praxe v oboru</span></div>
-          <div class="hero__meta-item"><span class="hero__meta-num">5,0★</span><span class="hero__meta-label">Hodnocení na Firmy.cz</span></div>
+      </div>
+
+      <div class="container">
+        <div class="hero__rail">
+          <div class="hero__stats">
+            <div class="hero__stat"><span class="hero__stat-num">40+</span><span class="hero__stat-lbl">Dokončených domů</span></div>
+            <div class="hero__stat"><span class="hero__stat-num">20</span><span class="hero__stat-lbl">Let praxe v oboru</span></div>
+            <div class="hero__stat"><span class="hero__stat-num">6–10</span><span class="hero__stat-lbl">Domů ročně</span></div>
+          </div>
+          <a class="hero__rating" href="https://www.firmy.cz/detail/13316725-dum-na-klic-s-r-o-plzen.html" target="_blank" rel="noopener" aria-label="Hodnocení 5,0 z 5 na Firmy.cz, 12 recenzí">
+            <span class="hero__rating-stars" aria-hidden="true">★★★★★</span>
+            <span class="hero__rating-txt"><strong>5,0&nbsp;/&nbsp;5</strong> na Firmy.cz · 12 recenzí</span>
+          </a>
         </div>
       </div>
     </div>
-    <div class="hero__scroll" aria-hidden="true">Posunout<span></span></div>
   </section>
 
   <!-- ============ PROČ STAVĚT S NÁMI (trust grid) ============ -->
@@ -253,8 +268,7 @@
 
       </div>
       <div class="center mt-l reveal">
-        <a class="btn btn--dark btn--lg" href="projekty-typove.html">Zobrazit celý katalog i specifikace
-          <svg viewBox="0 0 24 24"><path d="M4 11h12.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H4z"/></svg></a>
+        <a class="btn btn--dark btn--lg" href="projekty-typove.html">Zobrazit celý katalog i specifikace</a>
       </div>
     </div>
   </section>
@@ -570,6 +584,6 @@
   <div class="lightbox__cap"></div>
 </div>
 
-<script src="assets/js/main.js?v=9"></script>
+<script src="assets/js/main.js?v=10"></script>
 </body>
 </html>
